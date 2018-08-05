@@ -106,11 +106,11 @@ Here are the (current) steps to getting an API key:
 
 ### Troubleshooting
 
-**Directory Scan just goes on forever**
+#### Directory Scan just goes on forever
 
 This can take a few minutes, which on a computer screen can feel like an hour. If it's really frozen, just reload the page and try again.
 
-**Selected the wrong TVDB show and now all that show's episodes have incorrect names** *(Note: try to avoid this)*
+#### Selected the wrong TVDB show and now all that show's episodes have incorrect names *(Note: try to avoid this)*
 
 1. Move all episodes for that show out of the TV folder.
 2. Manually update the show's TVDB id (e.g. using phpMyAdmin) to either zero or the correct TVDB id.
@@ -118,11 +118,11 @@ This can take a few minutes, which on a computer screen can feel like an hour. I
 4. Move the show's files back into the show folder.
 5. Do another directory scan.
 
-**Episode positions are always 0:00**
+#### Episode positions are always 0:00
 
 In MPC, go to Options > Player and check the "Remember File position" box. (I'd also recommend changing Advanced > RecentFilesNumber to 40.)
 
-**Some shows / episodes are not showing up**
+#### Some shows / episodes are not showing up
 
 The scanner finds mkv, mp4, avi, wmv, and mov files. If your episodes are in a different format, you'll need to add it to `tvexec\scripts\scan_show_dir.php` in the part that looks like this:
 ```
