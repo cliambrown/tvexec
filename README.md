@@ -35,18 +35,18 @@ I really like MPC-HC, and all I wanted was a simple tool to easily open the next
 
 1. Create or choose a designated TV directory somewhere on your hard drive. Remove all non-TV files from it, and create one folder in it for every show (using the name of the show \['The' is optional\]). Add the episode files into each one (the organization of sub-directories and files inside each show folder is irrelevant).
 
-**Note if you have more than ~10 shows or if any shows have a lot of files, you may want to start with just a part of your TV library and add more files in stages later on.**
+   **Note: if you have more than ~10 shows or if any shows have a lot of files, you may want to start with just a part of your TV library and add more files in stages later on.**
 
-Example:
+   Example:
 ```
-C:\some\path
-  > TV
-    > Game of Thrones
-      > [some files & folders]
-    > Lost
-      > [more files & folders]
-    > Sopranos
-      > [even more files & folders]
+   C:\some\path
+     > TV
+       > Game of Thrones
+         > [some files & folders]
+       > Lost
+         > [more files & folders]
+       > Sopranos
+         > [even more files & folders]
 ``` 
 
 2. For each show, download a banner and save it as [folder_name].jpg in `tvexec\img\banners\`. (I use the "legacy banners" from TVDB.)
