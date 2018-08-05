@@ -1,0 +1,379 @@
+@import 'normalize';
+
+$body-font-size: 16px;
+$body-bg: #9C9C9C;
+$link-blue: #2196F3;
+$text-green: #2E7D32;
+$text-red: #F44336;
+$transition-time: 0.2s;
+$card-side-padding: 16px;
+$content-max-width: 1000px;
+
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/roboto-v18-latin-regular.eot');
+    src: local('Roboto'), local('Roboto-Regular'),
+       url('../fonts/roboto-v18-latin-regular.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/roboto-v18-latin-regular.woff2') format('woff2'),
+       url('../fonts/roboto-v18-latin-regular.woff') format('woff'),
+       url('../fonts/roboto-v18-latin-regular.ttf') format('truetype'),
+       url('../fonts/roboto-v18-latin-regular.svg#Roboto') format('svg');
+}
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    src: url('../fonts/roboto-v18-latin-700.eot');
+    src: local('Roboto Bold'), local('Roboto-Bold'),
+       url('../fonts/roboto-v18-latin-700.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/roboto-v18-latin-700.woff2') format('woff2'),
+       url('../fonts/roboto-v18-latin-700.woff') format('woff'),
+       url('../fonts/roboto-v18-latin-700.ttf') format('truetype'),
+       url('../fonts/roboto-v18-latin-700.svg#Roboto') format('svg');
+}
+
+/* Structure */
+body {
+    background: $body-bg;
+    font-family: 'Roboto', Arial, 'Helvetica Neue', Helvetica, sans-serif;
+    line-height: 1.2;
+    font-size: $body-font-size;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    
+    * { -webkit-box-sizing: border-box; box-sizing: border-box; }
+}
+#container {
+    width: 100%;
+    max-width: $content-max-width;
+    margin: 0 auto;
+    padding-bottom: 300px;
+}
+
+/* General */
+a {
+    color: $link-blue;
+    text-decoration: none;
+    cursor: pointer;
+}
+.grey-text { color: #727272; }
+.red-text { color: $text-red; }
+.center-text { text-align: center; }
+.wrapper {
+    position: relative;
+    padding-bottom: 1px;
+}
+.ellipis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+hr {
+    border: 0;
+    height: 1px;
+    background: #b3b3b3;
+    margin: 16px 0;
+}
+input[type="radio"], input[type="checkbox"], label {
+    cursor: pointer;
+}
+input[type="radio"] {
+    margin-left: 2px;
+}
+button {
+    display: inline-block;
+    text-transform: uppercase;
+    font-family: inherit;
+    font-size: $body-font-size;
+    font-weight: 700;
+    border: 0 none;
+    border-radius: 4px;
+    cursor: pointer;
+    outline: 0 !important;
+    background-color: darken($link-blue, 15%);
+    color: #FFF;
+    padding: 8px 16px;
+    margin: 24px 10px;
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    -webkit-transition: background-color $transition-time;
+    transition: background-color $transition-time;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    &:-moz-focus-inner { border: 0; }
+    &:disabled {
+        opacity: 0.5;
+        cursor: default;
+    }
+    &:hover, &:focus {
+        background-color: darken($link-blue, 25%) ;
+    }
+    &.loading {
+        background-image: url('../img/loading.gif');
+        color: transparent;
+    }
+}
+
+/* Cards */
+.card-container {
+    font-size: 0;
+    margin: 0 -10px;
+    
+    .card, p {
+        font-size: $body-font-size;
+    }
+}
+.card {
+    display: inline-block;
+    vertical-align: top;
+    border-radius: 4px;
+    background: #FFF;
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    margin: 10px;
+    padding: 12px $card-side-padding;
+    
+    h2, p {
+        margin-top: 0;
+        margin-bottom: 10px;
+    }
+    button {
+        color: $link-blue;
+        background: transparent;
+        padding: 6px 8px;
+        -webkit-box-shadow: none;
+                box-shadow: none;
+    }
+}
+
+/* New shows / missing episode info pages */
+#overlay-container {
+    display: none;
+    position: fixed;
+    top: 0; right: 0; bottom: 0; left: 0;
+    background: rgba(#000, 0.6);
+    overflow-y: auto;
+    
+    &.show { display: block; }
+    
+    #overlay-content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        max-width: $content-max-width + 40px;
+        background: $body-bg;
+        -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+                box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+        margin: 0 auto;
+        padding: 20px;
+    }
+}
+.new-show {
+    width: 100%;
+    max-width: 320px;
+    
+    .other-tvdbid {
+        width: 68px;
+    }
+    img {
+        max-width: 320px - (2 * $card-side-padding);
+    }
+    input[type="radio"]:checked + label {
+        font-weight: bold;
+        color: $text-green;
+
+        a { font-weight: normal; }
+    }
+}
+.episode-info {
+    .season-input, .epnum-input {
+        width: 32px;
+    }
+    .duration-input {
+        width: 60px;
+    }
+    .ep-name-input {
+        width: 100%;
+    }
+}
+
+/* Main Listing */
+.shows {
+    
+    .show-container {
+        display: inline-block;
+        width: 320px;
+        height: 164px;
+        position: relative;
+        vertical-align: top;
+        margin: 10px;
+        -webkit-transition: z-index 0s $transition-time;
+        transition: z-index 0s $transition-time;
+        
+        &.active {
+            height: 204px;
+        }
+    }
+    .show {
+        display: block;
+        margin: 0;
+        padding: 0;
+        cursor: pointer;
+        outline: 0 !important;
+        position: relative;
+        z-index: 1;
+        -webkit-transition: z-index 0s $transition-time;
+        transition: z-index 0s $transition-time;
+        
+        &:after {
+            content: '';
+            position: absolute;
+            top: 0; right: 0; left: 0; bottom: 0;
+            z-index: -1;
+            -webkit-box-shadow: 0 14px 28px rgba(0,0,0,0.35), 0 10px 10px rgba(0,0,0,0.3);
+                    box-shadow: 0 14px 28px rgba(0,0,0,0.35), 0 10px 10px rgba(0,0,0,0.3);
+            opacity: 0;
+            -webkit-transition: opacity $transition-time cubic-bezier(.25,.8,.25,1);
+            transition: opacity $transition-time cubic-bezier(.25,.8,.25,1);
+        }
+        &:focus, &:hover {
+            -webkit-box-shadow: none;
+                    box-shadow: none;
+            
+            &:after {
+                opacity: 1;
+            }
+        }
+        
+        .show-banner {
+            height: 59px;
+            background-position: center;
+            background-size: cover;
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
+        }
+        .show-info {
+            padding: 12px $card-side-padding $card-side-padding;
+            
+            .position { margin-bottom: 0; }
+        }
+        
+        @for $epNum from 0 through 500 {
+            &[data-nextepnum="#{$epNum}"] a.ep-#{$epNum} {
+                color: #2E7D32 !important;
+                font-weight: 700;
+            }
+        }
+        
+        .toggle-more-info-container {
+            position: absolute;
+            bottom: -5px;
+            right: -7px;
+            
+            .toggle-more-info {
+                position: absolute;
+                top: 0;
+                right: 0;
+                opacity: 0;
+                overflow: hidden;
+                width: 0;
+                height: 0;
+                z-index: -1;
+                
+                + label {
+                    display: block;
+                    width: 32px;
+                    height: 32px;
+                    text-align: center;
+                }
+                + label .expand_more,
+                &:checked + label .expand_less {
+                    margin-top: 4px;
+                    display: inline-block;
+                    width: 24px;
+                    height: 24px;
+                }
+                + label .expand_less,
+                &:checked + label .expand_more {
+                    display: none;
+                }
+            }
+        }
+        .more-info {
+            height: 0;
+            overflow: hidden;
+            -webkit-transition: height $transition-time;
+            transition: height $transition-time;
+            
+            .button-table-container {
+                margin: 4px -8px;
+                
+                .button-table {
+                    width: 100%;
+                    border-collapse: collapse;
+                    table-layout: fixed;
+                    
+                    td {
+                        width: 20%;
+                        text-align: center;
+                        
+                        svg {
+                            fill: $link-blue;
+                        }
+                        button {
+                            margin: 0;
+                        }
+                        button:hover svg {
+                            fill: darken($link-blue, 20%);
+                        }
+                    }
+                }
+            }
+            .episode-list {
+                height: 240px;
+                overflow-y: auto;
+                overflow-x: hidden;
+                $border-style: 2px solid #d8d8d8;
+                border-top: $border-style;
+                border-bottom: $border-style;
+                position: relative;
+                -webkit-box-shadow: inset 0px 6px 6px 0px rgba(255,255,255,1);
+                        box-shadow: inset 0px 6px 6px 0px rgba(255,255,255,1);
+                
+                a {
+                    display: block;
+                    padding: 4px $card-side-padding;
+                    padding: 4px 0;
+                    color: #707070;
+                    outline: 0 !important;
+                    -webkit-transition: color $transition-time;
+                    transition: color $transition-time;
+                    
+                    &:hover {
+                        color: #000;
+                    }
+                }
+            }
+        }
+    }
+    .show-container.expanded {
+        z-index: 2000;
+        -webkit-transition: z-index 0s;
+        transition: z-index 0s;
+        
+        .show {
+            z-index: 1000;
+            -webkit-transition: z-index 0s;
+            transition: z-index 0s;
+            
+            .more-info {
+                height: 294px;
+            }
+        }
+    }
+}
