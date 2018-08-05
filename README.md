@@ -17,9 +17,9 @@ I really like MPC-HC, and all I wanted was a simple tool to easily open the next
 
 ## Screenshots
 
-[The interface](https://github.com/cliambrown/tvexec/blob/master/screenshot.png)
+[The interface](screenshot.png)
 
-[With one show expanded](https://github.com/cliambrown/tvexec/blob/master/screenshot2.png)
+[With one show expanded](screenshot2.png)
 
 ## Getting Started
 
@@ -131,7 +131,7 @@ $epPathnames = get_all_files($tvDir.DIRECTORY_SEPARATOR.$show['showName'], ['avi
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
 
 ## Acknowledgments
 
