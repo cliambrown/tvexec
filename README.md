@@ -17,7 +17,9 @@ I really like MPC-HC, and all I wanted was a simple tool to easily open the next
 
 ## Screenshots
 
-coming soon
+[The interface](https://github.com/cliambrown/tvexec/blob/master/screenshot.png)
+
+[With one show expanded](https://github.com/cliambrown/tvexec/blob/master/screenshot2.png)
 
 ## Getting Started
 
