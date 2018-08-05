@@ -1,0 +1,2990 @@
+html {
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+hr {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+}
+
+a {
+  background-color: transparent;
+}
+
+b,
+strong {
+  font-weight: bolder;
+}
+
+img {
+  border-style: none;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+}
+
+button,
+input {
+  overflow: visible;
+}
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button;
+}
+
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+textarea {
+  overflow: auto;
+}
+
+[type="checkbox"],
+[type="radio"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+[hidden] {
+  display: none;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/roboto-v18-latin-regular.eot");
+  src: local("Roboto"), local("Roboto-Regular"), url("../fonts/roboto-v18-latin-regular.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto-v18-latin-regular.woff2") format("woff2"), url("../fonts/roboto-v18-latin-regular.woff") format("woff"), url("../fonts/roboto-v18-latin-regular.ttf") format("truetype"), url("../fonts/roboto-v18-latin-regular.svg#Roboto") format("svg");
+}
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  src: url("../fonts/roboto-v18-latin-700.eot");
+  src: local("Roboto Bold"), local("Roboto-Bold"), url("../fonts/roboto-v18-latin-700.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto-v18-latin-700.woff2") format("woff2"), url("../fonts/roboto-v18-latin-700.woff") format("woff"), url("../fonts/roboto-v18-latin-700.ttf") format("truetype"), url("../fonts/roboto-v18-latin-700.svg#Roboto") format("svg");
+}
+
+/* Structure */
+body {
+  background: #9C9C9C;
+  font-family: 'Roboto', Arial, 'Helvetica Neue', Helvetica, sans-serif;
+  line-height: 1.2;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body * {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+#container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding-bottom: 300px;
+}
+
+/* General */
+a {
+  color: #2196F3;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.grey-text {
+  color: #727272;
+}
+
+.red-text {
+  color: #F44336;
+}
+
+.center-text {
+  text-align: center;
+}
+
+.wrapper {
+  position: relative;
+  padding-bottom: 1px;
+}
+
+.ellipis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background: #b3b3b3;
+  margin: 16px 0;
+}
+
+input[type="radio"], input[type="checkbox"], label {
+  cursor: pointer;
+}
+
+input[type="radio"] {
+  margin-left: 2px;
+}
+
+button {
+  display: inline-block;
+  text-transform: uppercase;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 700;
+  border: 0 none;
+  border-radius: 4px;
+  cursor: pointer;
+  outline: 0 !important;
+  background-color: #0a6ebd;
+  color: #FFF;
+  padding: 8px 16px;
+  margin: 24px 10px;
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  -webkit-transition: background-color 0.2s;
+  transition: background-color 0.2s;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+button:-moz-focus-inner {
+  border: 0;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+button:hover, button:focus {
+  background-color: #08528d;
+}
+
+button.loading {
+  background-image: url("../img/loading.gif");
+  color: transparent;
+}
+
+/* Cards */
+.card-container {
+  font-size: 0;
+  margin: 0 -10px;
+}
+
+.card-container .card, .card-container p {
+  font-size: 16px;
+}
+
+.card {
+  display: inline-block;
+  vertical-align: top;
+  border-radius: 4px;
+  background: #FFF;
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  margin: 10px;
+  padding: 12px 16px;
+}
+
+.card h2, .card p {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.card button {
+  color: #2196F3;
+  background: transparent;
+  padding: 6px 8px;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+/* New shows / missing episode info pages */
+#overlay-container {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.6);
+  overflow-y: auto;
+}
+
+#overlay-container.show {
+  display: block;
+}
+
+#overlay-container #overlay-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  max-width: 1040px;
+  background: #9C9C9C;
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.new-show {
+  width: 100%;
+  max-width: 320px;
+}
+
+.new-show .other-tvdbid {
+  width: 68px;
+}
+
+.new-show img {
+  max-width: 288px;
+}
+
+.new-show input[type="radio"]:checked + label {
+  font-weight: bold;
+  color: #2E7D32;
+}
+
+.new-show input[type="radio"]:checked + label a {
+  font-weight: normal;
+}
+
+.episode-info .season-input, .episode-info .epnum-input {
+  width: 32px;
+}
+
+.episode-info .duration-input {
+  width: 60px;
+}
+
+.episode-info .ep-name-input {
+  width: 100%;
+}
+
+/* Main Listing */
+.shows .show-container {
+  display: inline-block;
+  width: 320px;
+  height: 164px;
+  position: relative;
+  vertical-align: top;
+  margin: 10px;
+  -webkit-transition: z-index 0s 0.2s;
+  transition: z-index 0s 0.2s;
+}
+
+.shows .show-container.active {
+  height: 204px;
+}
+
+.shows .show {
+  display: block;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  outline: 0 !important;
+  position: relative;
+  z-index: 1;
+  -webkit-transition: z-index 0s 0.2s;
+  transition: z-index 0s 0.2s;
+}
+
+.shows .show:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: -1;
+  -webkit-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.35), 0 10px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.35), 0 10px 10px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  -webkit-transition: opacity 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: opacity 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.shows .show:focus, .shows .show:hover {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.shows .show:focus:after, .shows .show:hover:after {
+  opacity: 1;
+}
+
+.shows .show .show-banner {
+  height: 59px;
+  background-position: center;
+  background-size: cover;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+.shows .show .show-info {
+  padding: 12px 16px 16px;
+}
+
+.shows .show .show-info .position {
+  margin-bottom: 0;
+}
+
+.shows .show[data-nextepnum="0"] a.ep-0 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="1"] a.ep-1 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="2"] a.ep-2 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="3"] a.ep-3 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="4"] a.ep-4 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="5"] a.ep-5 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="6"] a.ep-6 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="7"] a.ep-7 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="8"] a.ep-8 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="9"] a.ep-9 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="10"] a.ep-10 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="11"] a.ep-11 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="12"] a.ep-12 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="13"] a.ep-13 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="14"] a.ep-14 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="15"] a.ep-15 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="16"] a.ep-16 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="17"] a.ep-17 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="18"] a.ep-18 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="19"] a.ep-19 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="20"] a.ep-20 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="21"] a.ep-21 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="22"] a.ep-22 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="23"] a.ep-23 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="24"] a.ep-24 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="25"] a.ep-25 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="26"] a.ep-26 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="27"] a.ep-27 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="28"] a.ep-28 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="29"] a.ep-29 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="30"] a.ep-30 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="31"] a.ep-31 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="32"] a.ep-32 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="33"] a.ep-33 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="34"] a.ep-34 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="35"] a.ep-35 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="36"] a.ep-36 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="37"] a.ep-37 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="38"] a.ep-38 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="39"] a.ep-39 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="40"] a.ep-40 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="41"] a.ep-41 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="42"] a.ep-42 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="43"] a.ep-43 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="44"] a.ep-44 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="45"] a.ep-45 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="46"] a.ep-46 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="47"] a.ep-47 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="48"] a.ep-48 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="49"] a.ep-49 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="50"] a.ep-50 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="51"] a.ep-51 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="52"] a.ep-52 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="53"] a.ep-53 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="54"] a.ep-54 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="55"] a.ep-55 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="56"] a.ep-56 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="57"] a.ep-57 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="58"] a.ep-58 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="59"] a.ep-59 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="60"] a.ep-60 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="61"] a.ep-61 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="62"] a.ep-62 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="63"] a.ep-63 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="64"] a.ep-64 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="65"] a.ep-65 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="66"] a.ep-66 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="67"] a.ep-67 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="68"] a.ep-68 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="69"] a.ep-69 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="70"] a.ep-70 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="71"] a.ep-71 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="72"] a.ep-72 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="73"] a.ep-73 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="74"] a.ep-74 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="75"] a.ep-75 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="76"] a.ep-76 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="77"] a.ep-77 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="78"] a.ep-78 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="79"] a.ep-79 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="80"] a.ep-80 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="81"] a.ep-81 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="82"] a.ep-82 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="83"] a.ep-83 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="84"] a.ep-84 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="85"] a.ep-85 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="86"] a.ep-86 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="87"] a.ep-87 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="88"] a.ep-88 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="89"] a.ep-89 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="90"] a.ep-90 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="91"] a.ep-91 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="92"] a.ep-92 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="93"] a.ep-93 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="94"] a.ep-94 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="95"] a.ep-95 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="96"] a.ep-96 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="97"] a.ep-97 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="98"] a.ep-98 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="99"] a.ep-99 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="100"] a.ep-100 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="101"] a.ep-101 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="102"] a.ep-102 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="103"] a.ep-103 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="104"] a.ep-104 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="105"] a.ep-105 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="106"] a.ep-106 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="107"] a.ep-107 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="108"] a.ep-108 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="109"] a.ep-109 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="110"] a.ep-110 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="111"] a.ep-111 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="112"] a.ep-112 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="113"] a.ep-113 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="114"] a.ep-114 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="115"] a.ep-115 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="116"] a.ep-116 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="117"] a.ep-117 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="118"] a.ep-118 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="119"] a.ep-119 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="120"] a.ep-120 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="121"] a.ep-121 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="122"] a.ep-122 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="123"] a.ep-123 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="124"] a.ep-124 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="125"] a.ep-125 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="126"] a.ep-126 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="127"] a.ep-127 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="128"] a.ep-128 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="129"] a.ep-129 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="130"] a.ep-130 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="131"] a.ep-131 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="132"] a.ep-132 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="133"] a.ep-133 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="134"] a.ep-134 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="135"] a.ep-135 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="136"] a.ep-136 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="137"] a.ep-137 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="138"] a.ep-138 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="139"] a.ep-139 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="140"] a.ep-140 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="141"] a.ep-141 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="142"] a.ep-142 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="143"] a.ep-143 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="144"] a.ep-144 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="145"] a.ep-145 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="146"] a.ep-146 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="147"] a.ep-147 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="148"] a.ep-148 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="149"] a.ep-149 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="150"] a.ep-150 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="151"] a.ep-151 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="152"] a.ep-152 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="153"] a.ep-153 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="154"] a.ep-154 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="155"] a.ep-155 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="156"] a.ep-156 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="157"] a.ep-157 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="158"] a.ep-158 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="159"] a.ep-159 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="160"] a.ep-160 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="161"] a.ep-161 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="162"] a.ep-162 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="163"] a.ep-163 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="164"] a.ep-164 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="165"] a.ep-165 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="166"] a.ep-166 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="167"] a.ep-167 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="168"] a.ep-168 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="169"] a.ep-169 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="170"] a.ep-170 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="171"] a.ep-171 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="172"] a.ep-172 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="173"] a.ep-173 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="174"] a.ep-174 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="175"] a.ep-175 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="176"] a.ep-176 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="177"] a.ep-177 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="178"] a.ep-178 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="179"] a.ep-179 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="180"] a.ep-180 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="181"] a.ep-181 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="182"] a.ep-182 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="183"] a.ep-183 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="184"] a.ep-184 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="185"] a.ep-185 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="186"] a.ep-186 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="187"] a.ep-187 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="188"] a.ep-188 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="189"] a.ep-189 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="190"] a.ep-190 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="191"] a.ep-191 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="192"] a.ep-192 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="193"] a.ep-193 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="194"] a.ep-194 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="195"] a.ep-195 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="196"] a.ep-196 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="197"] a.ep-197 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="198"] a.ep-198 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="199"] a.ep-199 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="200"] a.ep-200 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="201"] a.ep-201 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="202"] a.ep-202 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="203"] a.ep-203 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="204"] a.ep-204 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="205"] a.ep-205 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="206"] a.ep-206 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="207"] a.ep-207 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="208"] a.ep-208 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="209"] a.ep-209 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="210"] a.ep-210 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="211"] a.ep-211 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="212"] a.ep-212 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="213"] a.ep-213 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="214"] a.ep-214 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="215"] a.ep-215 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="216"] a.ep-216 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="217"] a.ep-217 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="218"] a.ep-218 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="219"] a.ep-219 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="220"] a.ep-220 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="221"] a.ep-221 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="222"] a.ep-222 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="223"] a.ep-223 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="224"] a.ep-224 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="225"] a.ep-225 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="226"] a.ep-226 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="227"] a.ep-227 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="228"] a.ep-228 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="229"] a.ep-229 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="230"] a.ep-230 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="231"] a.ep-231 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="232"] a.ep-232 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="233"] a.ep-233 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="234"] a.ep-234 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="235"] a.ep-235 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="236"] a.ep-236 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="237"] a.ep-237 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="238"] a.ep-238 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="239"] a.ep-239 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="240"] a.ep-240 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="241"] a.ep-241 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="242"] a.ep-242 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="243"] a.ep-243 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="244"] a.ep-244 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="245"] a.ep-245 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="246"] a.ep-246 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="247"] a.ep-247 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="248"] a.ep-248 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="249"] a.ep-249 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="250"] a.ep-250 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="251"] a.ep-251 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="252"] a.ep-252 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="253"] a.ep-253 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="254"] a.ep-254 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="255"] a.ep-255 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="256"] a.ep-256 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="257"] a.ep-257 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="258"] a.ep-258 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="259"] a.ep-259 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="260"] a.ep-260 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="261"] a.ep-261 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="262"] a.ep-262 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="263"] a.ep-263 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="264"] a.ep-264 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="265"] a.ep-265 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="266"] a.ep-266 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="267"] a.ep-267 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="268"] a.ep-268 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="269"] a.ep-269 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="270"] a.ep-270 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="271"] a.ep-271 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="272"] a.ep-272 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="273"] a.ep-273 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="274"] a.ep-274 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="275"] a.ep-275 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="276"] a.ep-276 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="277"] a.ep-277 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="278"] a.ep-278 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="279"] a.ep-279 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="280"] a.ep-280 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="281"] a.ep-281 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="282"] a.ep-282 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="283"] a.ep-283 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="284"] a.ep-284 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="285"] a.ep-285 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="286"] a.ep-286 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="287"] a.ep-287 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="288"] a.ep-288 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="289"] a.ep-289 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="290"] a.ep-290 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="291"] a.ep-291 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="292"] a.ep-292 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="293"] a.ep-293 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="294"] a.ep-294 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="295"] a.ep-295 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="296"] a.ep-296 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="297"] a.ep-297 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="298"] a.ep-298 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="299"] a.ep-299 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="300"] a.ep-300 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="301"] a.ep-301 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="302"] a.ep-302 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="303"] a.ep-303 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="304"] a.ep-304 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="305"] a.ep-305 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="306"] a.ep-306 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="307"] a.ep-307 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="308"] a.ep-308 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="309"] a.ep-309 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="310"] a.ep-310 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="311"] a.ep-311 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="312"] a.ep-312 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="313"] a.ep-313 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="314"] a.ep-314 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="315"] a.ep-315 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="316"] a.ep-316 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="317"] a.ep-317 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="318"] a.ep-318 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="319"] a.ep-319 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="320"] a.ep-320 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="321"] a.ep-321 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="322"] a.ep-322 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="323"] a.ep-323 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="324"] a.ep-324 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="325"] a.ep-325 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="326"] a.ep-326 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="327"] a.ep-327 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="328"] a.ep-328 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="329"] a.ep-329 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="330"] a.ep-330 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="331"] a.ep-331 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="332"] a.ep-332 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="333"] a.ep-333 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="334"] a.ep-334 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="335"] a.ep-335 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="336"] a.ep-336 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="337"] a.ep-337 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="338"] a.ep-338 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="339"] a.ep-339 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="340"] a.ep-340 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="341"] a.ep-341 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="342"] a.ep-342 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="343"] a.ep-343 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="344"] a.ep-344 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="345"] a.ep-345 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="346"] a.ep-346 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="347"] a.ep-347 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="348"] a.ep-348 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="349"] a.ep-349 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="350"] a.ep-350 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="351"] a.ep-351 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="352"] a.ep-352 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="353"] a.ep-353 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="354"] a.ep-354 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="355"] a.ep-355 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="356"] a.ep-356 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="357"] a.ep-357 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="358"] a.ep-358 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="359"] a.ep-359 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="360"] a.ep-360 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="361"] a.ep-361 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="362"] a.ep-362 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="363"] a.ep-363 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="364"] a.ep-364 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="365"] a.ep-365 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="366"] a.ep-366 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="367"] a.ep-367 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="368"] a.ep-368 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="369"] a.ep-369 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="370"] a.ep-370 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="371"] a.ep-371 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="372"] a.ep-372 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="373"] a.ep-373 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="374"] a.ep-374 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="375"] a.ep-375 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="376"] a.ep-376 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="377"] a.ep-377 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="378"] a.ep-378 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="379"] a.ep-379 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="380"] a.ep-380 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="381"] a.ep-381 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="382"] a.ep-382 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="383"] a.ep-383 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="384"] a.ep-384 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="385"] a.ep-385 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="386"] a.ep-386 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="387"] a.ep-387 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="388"] a.ep-388 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="389"] a.ep-389 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="390"] a.ep-390 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="391"] a.ep-391 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="392"] a.ep-392 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="393"] a.ep-393 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="394"] a.ep-394 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="395"] a.ep-395 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="396"] a.ep-396 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="397"] a.ep-397 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="398"] a.ep-398 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="399"] a.ep-399 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="400"] a.ep-400 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="401"] a.ep-401 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="402"] a.ep-402 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="403"] a.ep-403 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="404"] a.ep-404 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="405"] a.ep-405 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="406"] a.ep-406 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="407"] a.ep-407 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="408"] a.ep-408 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="409"] a.ep-409 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="410"] a.ep-410 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="411"] a.ep-411 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="412"] a.ep-412 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="413"] a.ep-413 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="414"] a.ep-414 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="415"] a.ep-415 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="416"] a.ep-416 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="417"] a.ep-417 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="418"] a.ep-418 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="419"] a.ep-419 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="420"] a.ep-420 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="421"] a.ep-421 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="422"] a.ep-422 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="423"] a.ep-423 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="424"] a.ep-424 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="425"] a.ep-425 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="426"] a.ep-426 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="427"] a.ep-427 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="428"] a.ep-428 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="429"] a.ep-429 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="430"] a.ep-430 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="431"] a.ep-431 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="432"] a.ep-432 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="433"] a.ep-433 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="434"] a.ep-434 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="435"] a.ep-435 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="436"] a.ep-436 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="437"] a.ep-437 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="438"] a.ep-438 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="439"] a.ep-439 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="440"] a.ep-440 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="441"] a.ep-441 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="442"] a.ep-442 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="443"] a.ep-443 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="444"] a.ep-444 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="445"] a.ep-445 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="446"] a.ep-446 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="447"] a.ep-447 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="448"] a.ep-448 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="449"] a.ep-449 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="450"] a.ep-450 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="451"] a.ep-451 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="452"] a.ep-452 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="453"] a.ep-453 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="454"] a.ep-454 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="455"] a.ep-455 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="456"] a.ep-456 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="457"] a.ep-457 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="458"] a.ep-458 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="459"] a.ep-459 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="460"] a.ep-460 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="461"] a.ep-461 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="462"] a.ep-462 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="463"] a.ep-463 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="464"] a.ep-464 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="465"] a.ep-465 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="466"] a.ep-466 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="467"] a.ep-467 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="468"] a.ep-468 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="469"] a.ep-469 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="470"] a.ep-470 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="471"] a.ep-471 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="472"] a.ep-472 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="473"] a.ep-473 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="474"] a.ep-474 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="475"] a.ep-475 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="476"] a.ep-476 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="477"] a.ep-477 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="478"] a.ep-478 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="479"] a.ep-479 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="480"] a.ep-480 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="481"] a.ep-481 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="482"] a.ep-482 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="483"] a.ep-483 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="484"] a.ep-484 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="485"] a.ep-485 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="486"] a.ep-486 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="487"] a.ep-487 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="488"] a.ep-488 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="489"] a.ep-489 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="490"] a.ep-490 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="491"] a.ep-491 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="492"] a.ep-492 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="493"] a.ep-493 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="494"] a.ep-494 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="495"] a.ep-495 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="496"] a.ep-496 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="497"] a.ep-497 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="498"] a.ep-498 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="499"] a.ep-499 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show[data-nextepnum="500"] a.ep-500 {
+  color: #2E7D32 !important;
+  font-weight: 700;
+}
+
+.shows .show .toggle-more-info-container {
+  position: absolute;
+  bottom: -5px;
+  right: -7px;
+}
+
+.shows .show .toggle-more-info-container .toggle-more-info {
+  position: absolute;
+  top: 0;
+  right: 0;
+  opacity: 0;
+  overflow: hidden;
+  width: 0;
+  height: 0;
+  z-index: -1;
+}
+
+.shows .show .toggle-more-info-container .toggle-more-info + label {
+  display: block;
+  width: 32px;
+  height: 32px;
+  text-align: center;
+}
+
+.shows .show .toggle-more-info-container .toggle-more-info + label .expand_more,
+.shows .show .toggle-more-info-container .toggle-more-info:checked + label .expand_less {
+  margin-top: 4px;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+}
+
+.shows .show .toggle-more-info-container .toggle-more-info + label .expand_less,
+.shows .show .toggle-more-info-container .toggle-more-info:checked + label .expand_more {
+  display: none;
+}
+
+.shows .show .more-info {
+  height: 0;
+  overflow: hidden;
+  -webkit-transition: height 0.2s;
+  transition: height 0.2s;
+}
+
+.shows .show .more-info .button-table-container {
+  margin: 4px -8px;
+}
+
+.shows .show .more-info .button-table-container .button-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.shows .show .more-info .button-table-container .button-table td {
+  width: 20%;
+  text-align: center;
+}
+
+.shows .show .more-info .button-table-container .button-table td svg {
+  fill: #2196F3;
+}
+
+.shows .show .more-info .button-table-container .button-table td button {
+  margin: 0;
+}
+
+.shows .show .more-info .button-table-container .button-table td button:hover svg {
+  fill: #0960a5;
+}
+
+.shows .show .more-info .episode-list {
+  height: 240px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border-top: 2px solid #d8d8d8;
+  border-bottom: 2px solid #d8d8d8;
+  position: relative;
+  -webkit-box-shadow: inset 0px 6px 6px 0px white;
+  box-shadow: inset 0px 6px 6px 0px white;
+}
+
+.shows .show .more-info .episode-list a {
+  display: block;
+  padding: 4px 16px;
+  padding: 4px 0;
+  color: #707070;
+  outline: 0 !important;
+  -webkit-transition: color 0.2s;
+  transition: color 0.2s;
+}
+
+.shows .show .more-info .episode-list a:hover {
+  color: #000;
+}
+
+.shows .show-container.expanded {
+  z-index: 2000;
+  -webkit-transition: z-index 0s;
+  transition: z-index 0s;
+}
+
+.shows .show-container.expanded .show {
+  z-index: 1000;
+  -webkit-transition: z-index 0s;
+  transition: z-index 0s;
+}
+
+.shows .show-container.expanded .show .more-info {
+  height: 294px;
+}
+
+/*# sourceMappingURL=style.css.map */
