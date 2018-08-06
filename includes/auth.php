@@ -1,21 +1,26 @@
 <?php
     
-    // A random string used in session variable to secure scripts (16+ characters recommended)
-    $tvExecPassword = 'YOUR_RANDOM_STRING_HERE';
-	// See the readme for info on getting a TVDB API key
-    $tvdbApiKey = 'YOUR_TVDB_API_KEY';
-	// The directory where your files are stored. e.g. 'C:\PATH\TO\TVFILES'
-    $tvDir = 'C:\PATH\TO\TVFILES';
-	// Pathname for your MPC installation
-    $mpcPathname = 'C:\Program Files (x86)\MPC-HC\mpc-hc.exe';
+    // Add a random string here to help secure your scripts
+    $tvExecPassword = 'YOUR_RANDOM_STRING_HERE_asdfghjkl;1234%&*';
+    // See "Getting a TVDB API Key" in the README
+    $tvdbApiKey = 'YOUR_API_KEY_HERE';
+    // The folder where your tv show files are stored
+    $tvDir = 'C:\path\to\TV';
+    // The full path & filename of the program you want to use to open your video files
+    // Note: file positions WILL NOT WORK if you're not using MPC with "remember position" enabled
+    $videoPlayerPathname = 'C:\Program Files (x86)\MPC-HC\mpc-hc-gpu.exe';
+    // Optional switches for opening files
+    $videoPlayerSwitches = '/play /fullscreen';
+    // You can add (or remove) file extensions from this list if you need to
+    $videoFiletypes = ['avi','mkv','mp4','mov','wmv'];
     
     require_once 'Tvdb.php';
     
     // Mysql Connect
     $host = 'localhost';
-	$db   = 'TVEXEC_DB_NAME';
-	$user = 'A_MYSQL_USERNAME';
-	$pass = 'A_MYSQL_PASSWORD';
+	$db   = 'YOUR_TVEXEC_DB_NAME';
+	$user = 'YOUR_TVEXEC_MYSQL_USERNAME';
+	$pass = 'YOUR_TVEXEC_MYSQL_PASSWORD';
 	$charset = 'utf8';
 	$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
 	$opt = [

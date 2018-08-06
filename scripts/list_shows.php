@@ -23,8 +23,7 @@
         }
     }
     foreach ($pathnames as $mpcID => $pathname) {
-        $filename = basename($pathname);
-        if (isset($positions[$mpcID])) $filePositions[$filename] = $positions[$mpcID];
+        if (isset($positions[$mpcID])) $filePositions[$pathname] = $positions[$mpcID];
     }
     
     // Get shows & episodes from mysql
@@ -46,9 +45,9 @@
         $episodes = [];
         foreach ($epStmt as $epInfo) {
             $episode = $epInfo;
-            if (isset($filePositions[$epInfo['filename']])) $episode['position'] = $filePositions[$epInfo['filename']];
-            else $episode['position'] = '0:00';
             $episode['pathname'] = $episode['filepath'].DIRECTORY_SEPARATOR.$episode['filename'];
+            if (isset($filePositions[$episode['pathname']])) $episode['position'] = $filePositions[$episode['pathname']];
+            else $episode['position'] = '0:00';
             if (!is_null($episode['seasonNum']) && !is_null($episode['episodeNum'])) {
                 $episode['epName'] = sprintf('S%02dE%02d', $episode['seasonNum'], $episode['episodeNum']).' '.$episode['epName'];
             }
@@ -67,7 +66,7 @@
     }
     
     if ($activeCount) {
-        echo '<div class="shows card-container">';
+        echo '<div class="shows cards-container">';
         foreach ($shows as $show) {
             if ($show['isActive']) echo_show($show);
         }
@@ -76,7 +75,7 @@
     }
     
     if ($inactiveCount) {
-        echo '<div class="shows card-container">';
+        echo '<div class="shows cards-container">';
         foreach ($shows as $show) {
             if (!$show['isActive']) echo_show($show);
         }
@@ -106,12 +105,12 @@
         }
         $remainingEps = $show['epCount'] - $show['nextEpNum'];
         ?>
-            <div class="show-container <?=($show['isActive'] ? 'active' : '');?>">
+            <div class="show-container card-container <?=($show['isActive'] ? 'active' : '');?>">
                 <div class="show card" tabindex="0" id="show-<?=$showID;?>" data-nextepnum="<?=$show['nextEpNum'];?>">
                     <div class="show-banner" style="background-image:url('img/banners/<?=htmlspecialchars(str_replace('\'', '\\\'', $showName));?>.jpg');"></div>
                     <div class="show-info">
                         
-                        <h2 class="ellipis" title="<?=htmlspecialchars($showName);?>"><?=htmlspecialchars($showName);?></h2>
+                        <h2 class="ellipsis" title="<?=htmlspecialchars($showName);?>"><?=htmlspecialchars($showName);?></h2>
                         
                         <div class="wrapper">
                             
@@ -120,7 +119,7 @@
                                 of <?=$show['epCount'];?> episode<?=($show['epCount'] == 1 ? '' : 's');?> remaining
                             </p>
                             
-                            <p class="ellipis" id="show-<?=$showID;?>-next-ep-name" title="<?=esc($nextEpisode['epName']);?>">
+                            <p class="ellipsis" id="show-<?=$showID;?>-next-ep-name" title="<?=esc($nextEpisode['epName']);?>">
                                 <?=esc($nextEpisode['epName']);?>
                             </p>
                             
@@ -176,7 +175,7 @@
                             
                             <div class="episode-list" tabindex="-1">
                                 <?php foreach ($show['episodes'] as $epNum => $episode) { ?>
-                                    <a tabindex="-1" class="ep-nav ep-list-nav ellipis ep-<?=$epNum;?>" id="show-<?=$showID;?>-ep-nav-<?=$epNum;?>" data-epnum="<?=$epNum;?>" title="<?=esc($episode['epName']);?>">
+                                    <a tabindex="-1" class="ep-nav ep-list-nav ellipsis ep-<?=$epNum;?>" id="show-<?=$showID;?>-ep-nav-<?=$epNum;?>" data-epnum="<?=$epNum;?>" title="<?=esc($episode['epName']);?>">
                                             <?=esc($episode['epName']);?>
                                     </a>
                                 <?php } ?>

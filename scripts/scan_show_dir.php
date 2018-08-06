@@ -55,40 +55,42 @@
         ob_start();
         ?>
             <h1>Verify New Shows</h1>
-            <form class="card-container" method="post" action="scripts/save_show_tvdbids.php">
+            <form class="cards-container" method="post" action="scripts/save_show_tvdbids.php">
                 <?php foreach ($newShows as $newShow) { ?>
-                    <div class="new-show card">
-                        <h2><?=$newShow['showName'];?></h2>
-                        <p>
-                            <?php if (file_exists("../img/banners/{$newShow['showName']}.jpg")) { ?>
-                                <img src="img/banners/<?=$newShow['showName'];?>.jpg">
-                            <?php } else { ?>
-                                <span class="red-text">No banner image found!</span>
+                    <div class="card-container">
+                        <div class="new-show card">
+                            <h2><?=$newShow['showName'];?></h2>
+                            <p>
+                                <?php if (file_exists("../img/banners/{$newShow['showName']}.jpg")) { ?>
+                                    <img src="img/banners/<?=$newShow['showName'];?>.jpg">
+                                <?php } else { ?>
+                                    <span class="red-text">No banner image found!</span>
+                                <?php } ?>
+                            </p>
+                            <?php foreach ($newShow['tvdbResponseData'] as $data) { ?>
+                                <?php
+                                    $seriesName = $data['seriesName'];
+                                    if (preg_match('/\([1-2][0-9]{3}\)$/', $seriesName) !== 1) {
+                                        $year = date('Y', strtotime($data['firstAired']));
+                                        $seriesName .= " ($year)";
+                                    }
+                                ?>
+                                <p class="ellipsis">
+                                    <input type="radio" id="show-<?=$newShow['showID'];?>-<?=$data['id'];?>" name="show-<?=$newShow['showID'];?>" 
+                                        value="<?=$data['id'];?>" <?=(count($newShow['tvdbResponseData']) == 1 ? 'checked' : '');?>/>
+                                    <label for="show-<?=$newShow['showID'];?>-<?=$data['id'];?>">
+                                        <a href="https://www.thetvdb.com/series/<?=$data['slug'];?>" target="_blank">[link]</a>
+                                        <?=$seriesName;?>
+                                    </label>
+                                </p>
                             <?php } ?>
-                        </p>
-                        <?php foreach ($newShow['tvdbResponseData'] as $data) { ?>
-                            <?php
-                                $seriesName = $data['seriesName'];
-                                if (preg_match('/\([1-2][0-9]{3}\)$/', $seriesName) !== 1) {
-                                    $year = date('Y', strtotime($data['firstAired']));
-                                    $seriesName .= " ($year)";
-                                }
-                            ?>
-                            <p class="ellipis">
-                                <input type="radio" id="show-<?=$newShow['showID'];?>-<?=$data['id'];?>" name="show-<?=$newShow['showID'];?>" 
-                                    value="<?=$data['id'];?>" <?=(count($newShow['tvdbResponseData']) == 1 ? 'checked' : '');?>/>
-                                <label for="show-<?=$newShow['showID'];?>-<?=$data['id'];?>">
-                                    <a href="https://www.thetvdb.com/series/<?=$data['slug'];?>" target="_blank">[link]</a>
-                                    <?=$seriesName;?>
+                            <p class="ellipsis">
+                                <input type="radio" id="show-<?=$newShow['showID'];?>-other" name="show-<?=$newShow['showID'];?>" value="other" />
+                                <label for="show-<?=$newShow['showID'];?>-other">
+                                    Other (TVDB ID): <input type="text" name="show-<?=$newShow['showID'];?>-other" class="other-tvdbid">
                                 </label>
                             </p>
-                        <?php } ?>
-                        <p class="ellipis">
-                            <input type="radio" id="show-<?=$newShow['showID'];?>-other" name="show-<?=$newShow['showID'];?>" value="other" />
-                            <label for="show-<?=$newShow['showID'];?>-other">
-                                Other (TVDB ID): <input type="text" name="show-<?=$newShow['showID'];?>-other" class="other-tvdbid">
-                            </label>
-                        </p>
+                        </div>
                     </div>
                 <?php } ?>
                 <p class="center-text">
@@ -100,7 +102,7 @@
         $html = ob_get_clean();
         header('Content-type: application/json');
         echo json_encode([
-            'showOverlay' => true,
+            'hasHtml' => true,
             'html' => $html
         ]);
         $tvdb->curl_close();
@@ -115,9 +117,11 @@
     
     foreach ($shows as $key => $show) {
         
+        global $videoFiletypes;
+        
         // Get episode files
         $show['episodes'] = [];
-        $epPathnames = get_all_files($tvDir.DIRECTORY_SEPARATOR.$show['showName'], ['avi','mkv','mp4','mov','wmv']);
+        $epPathnames = get_all_files($tvDir.DIRECTORY_SEPARATOR.$show['showName'], $videoFiletypes);
         $epCount = count($epPathnames);
         $show['epCount'] = $epCount;
         if (!$epCount) {
@@ -159,6 +163,7 @@
                 else {
                     $epsMissingInfo[$epID] = [
                         'pathname' => $pathname,
+                        'tvdbID' => $show['tvdbID'],
                         'missingSE' => true
                     ];
                 }
@@ -176,6 +181,7 @@
                 else {
                     $epsMissingInfo[$epID] = [
                         'pathname' => $pathname,
+                        'tvdbID' => $show['tvdbID'],
                         'missingEpName' => true
                     ];
                 }
@@ -203,6 +209,7 @@
                 else {
                     $epsMissingInfo[$epID] = [
                         'pathname' => $pathname,
+                        'tvdbID' => $show['tvdbID'],
                         'missingDuration' => true
                     ];
                 }
@@ -242,34 +249,36 @@
         ob_start();
         ?>
             <h1>Add Missing Episode Info</h1>
-            <form class="card-container" method="post" action="scripts/save_ep_info.php">
+            <form class="cards-container" method="post" action="scripts/save_ep_info.php">
                 <?php foreach ($epsMissingInfo as $epID => $episode) { ?>
-                    <div class="card episode-info">
-                        <p class="grey-text ellipsis" title="<?=htmlspecialchars($episode['pathname']);?>"><?=htmlspecialchars(basename($episode['pathname']));?></p>
-                        <p>
-                            <a class="open-folder" href="javascript:;" data-path="<?=htmlspecialchars(dirname($episode['pathname']));?>">folder</a> --
-                            <a class="open-file" href="javascript:;" data-pathname="<?=htmlspecialchars($episode['pathname']);?>">file</a>
-                            <?php if ($show['tvdbID']) { ?>
-                                -- <a href="https://www.thetvdb.com/dereferrer/series/<?=$show['tvdbID'];?>" target="_blank">tvdb</a>
+                    <div class="card-container episode-info">
+                        <div class="card">
+                            <p class="grey-text ellipsis" title="<?=htmlspecialchars($episode['pathname']);?>"><?=htmlspecialchars(basename($episode['pathname']));?></p>
+                            <p>
+                                <a class="open-folder" href="javascript:;" data-path="<?=htmlspecialchars(dirname($episode['pathname']));?>">folder</a> --
+                                <a class="open-file" href="javascript:;" data-pathname="<?=htmlspecialchars($episode['pathname']);?>">file</a>
+                                <?php if ($episode['tvdbID']) { ?>
+                                    -- <a href="https://www.thetvdb.com/dereferrer/series/<?=$episode['tvdbID'];?>" target="_blank">tvdb</a>
+                                <?php } ?>
+                            </p>
+                            <?php if (isset($episode['missingSE']) && $episode['missingSE']) { ?>
+                                <p>
+                                    Season: <input type="text" name="episode-<?=$epID;?>-season" class="season-input"><br>
+                                    Episode: <input type="text" name="episode-<?=$epID;?>-episodenum" class="epnum-input">
+                                </p>
                             <?php } ?>
-                        </p>
-                        <?php if (isset($episode['missingSE']) && $episode['missingSE']) { ?>
-                            <p>
-                                Season: <input type="text" name="episode-<?=$epID;?>-season" class="season-input"><br>
-                                Episode: <input type="text" name="episode-<?=$epID;?>-episodenum" class="epnum-input">
-                            </p>
-                        <?php } ?>
-                        <?php if (isset($episode['missingEpName']) && $episode['missingEpName']) { ?>
-                            <p>
-                                Episode name:
-                                <input type="text" name="episode-<?=$epID;?>-name" class="ep-name-input">
-                            </p>
-                        <?php } ?>
-                        <?php if (isset($episode['missingDuration']) && $episode['missingDuration']) { ?>
-                            <p>
-                                Duration: <input type="text" name="episode-<?=$epID;?>-duration" value="[?]" class="duration-input">
-                            </p>
-                        <?php } ?>
+                            <?php if (isset($episode['missingEpName']) && $episode['missingEpName']) { ?>
+                                <p>
+                                    Episode name:
+                                    <input type="text" name="episode-<?=$epID;?>-name" class="ep-name-input">
+                                </p>
+                            <?php } ?>
+                            <?php if (isset($episode['missingDuration']) && $episode['missingDuration']) { ?>
+                                <p>
+                                    Duration: <input type="text" name="episode-<?=$epID;?>-duration" value="[?]" class="duration-input">
+                                </p>
+                            <?php } ?>
+                        </div>
                     </div>
                 <?php  } ?>
                 <p class="center-text">
@@ -280,7 +289,7 @@
         $html = ob_get_clean();
         header('Content-type: application/json');
         echo json_encode([
-            'showOverlay' => true,
+            'hasHtml' => true,
             'html' => $html
         ]);
         $tvdb->curl_close();
@@ -289,7 +298,7 @@
     
     header('Content-type: application/json');
     echo json_encode([
-        'showOverlay' => false
+        'hasHtml' => false
     ]);
     
     function get_all_files($dir, $exts, $files = []) {

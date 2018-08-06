@@ -9,7 +9,7 @@
 <head>
     <meta charset="utf-8">
     <title>TV Exec</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=0.2">
 </head>
 <body>
 
@@ -26,13 +26,9 @@
         
     </div>
     
-    <div id="overlay-container">
-        <div id="overlay-content"></div>
-    </div>
-    
     <script>
-        var mpcExe = '<?=json_encode($mpcPathname);?>';
+        var mpcExe = '<?=json_encode($videoPlayerPathname);?>';
     </script>
-    <script src="js/script.js"></script>
+    <script src="js/script.js?v=0.2"></script>
 </body>
 </html>

@@ -1,13 +1,15 @@
 @import 'normalize';
 
-$body-font-size: 16px;
+$body-font-size: 20px;
 $body-bg: #9C9C9C;
+$body-bg: #242424;
 $link-blue: #2196F3;
 $text-green: #2E7D32;
 $text-red: #F44336;
 $transition-time: 0.2s;
+$card-width: 400px;
 $card-side-padding: 16px;
-$content-max-width: 1000px;
+$card-side-margin: 14px;
 
 @font-face {
     font-family: 'Roboto';
@@ -42,14 +44,18 @@ body {
     font-size: $body-font-size;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    color: #FFF;
+    text-align: center;
     
     * { -webkit-box-sizing: border-box; box-sizing: border-box; }
 }
 #container {
+    display: inline-block;
     width: 100%;
-    max-width: $content-max-width;
+    max-width: 1200px;
     margin: 0 auto;
-    padding-bottom: 300px;
+    padding: 28px $card-side-padding 300px;
+    text-align: left;
 }
 
 /* General */
@@ -65,7 +71,7 @@ a {
     position: relative;
     padding-bottom: 1px;
 }
-.ellipis {
+.ellipsis {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -118,71 +124,50 @@ button {
 }
 
 /* Cards */
-.card-container {
+.cards-container {
     font-size: 0;
-    margin: 0 -10px;
+    margin: 0 (-1 * $card-side-margin);
     
     .card, p {
         font-size: $body-font-size;
     }
-}
-.card {
-    display: inline-block;
-    vertical-align: top;
-    border-radius: 4px;
-    background: #FFF;
-    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-    margin: 10px;
-    padding: 12px $card-side-padding;
     
-    h2, p {
-        margin-top: 0;
-        margin-bottom: 10px;
-    }
-    button {
-        color: $link-blue;
-        background: transparent;
-        padding: 6px 8px;
-        -webkit-box-shadow: none;
+    .card-container {
+        display: inline-block;
+        width: 33.3333%;
+        max-width: $card-width;
+        padding: $card-side-margin;
+        vertical-align: top;
+        
+        .card {
+            display: block;
+            border-radius: 4px;
+            background: #FFF;
+            -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.8), 0 1px 2px rgba(0,0,0,1);
+                    box-shadow: 0 1px 3px rgba(0,0,0,0.8), 0 1px 2px rgba(0,0,0,1);
+            padding: 12px $card-side-padding;
+            color: #000;
+            
+            h2, p {
+                margin-top: 0;
+                margin-bottom: 10px;
+            }
+            button {
+                color: $link-blue;
+                background: transparent;
+                padding: 6px 8px;
+                -webkit-box-shadow: none;
                 box-shadow: none;
+            }
+        }
     }
 }
 
-/* New shows / missing episode info pages */
-#overlay-container {
-    display: none;
-    position: fixed;
-    top: 0; right: 0; bottom: 0; left: 0;
-    background: rgba(#000, 0.6);
-    overflow-y: auto;
-    
-    &.show { display: block; }
-    
-    #overlay-content {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        width: 100%;
-        max-width: $content-max-width + 40px;
-        background: $body-bg;
-        -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-                box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-        margin: 0 auto;
-        padding: 20px;
-    }
-}
 .new-show {
-    width: 100%;
-    max-width: 320px;
-    
     .other-tvdbid {
         width: 68px;
     }
-    img {
-        max-width: 320px - (2 * $card-side-padding);
-    }
+    img { max-width: 100%; }
     input[type="radio"]:checked + label {
         font-weight: bold;
         color: $text-green;
@@ -206,174 +191,195 @@ button {
 .shows {
     
     .show-container {
-        display: inline-block;
-        width: 320px;
-        height: 164px;
+        height: 206px;
         position: relative;
-        vertical-align: top;
-        margin: 10px;
         -webkit-transition: z-index 0s $transition-time;
         transition: z-index 0s $transition-time;
         
         &.active {
-            height: 204px;
+            height: 254px;
         }
-    }
-    .show {
-        display: block;
-        margin: 0;
-        padding: 0;
-        cursor: pointer;
-        outline: 0 !important;
-        position: relative;
-        z-index: 1;
-        -webkit-transition: z-index 0s $transition-time;
-        transition: z-index 0s $transition-time;
-        
-        &:after {
-            content: '';
-            position: absolute;
-            top: 0; right: 0; left: 0; bottom: 0;
-            z-index: -1;
-            -webkit-box-shadow: 0 14px 28px rgba(0,0,0,0.35), 0 10px 10px rgba(0,0,0,0.3);
-                    box-shadow: 0 14px 28px rgba(0,0,0,0.35), 0 10px 10px rgba(0,0,0,0.3);
-            opacity: 0;
-            -webkit-transition: opacity $transition-time cubic-bezier(.25,.8,.25,1);
-            transition: opacity $transition-time cubic-bezier(.25,.8,.25,1);
-        }
-        &:focus, &:hover {
-            -webkit-box-shadow: none;
-                    box-shadow: none;
-            
-            &:after {
-                opacity: 1;
-            }
-        }
-        
-        .show-banner {
-            height: 59px;
-            background-position: center;
-            background-size: cover;
-            border-top-left-radius: 4px;
-            border-top-right-radius: 4px;
-        }
-        .show-info {
-            padding: 12px $card-side-padding $card-side-padding;
-            
-            .position { margin-bottom: 0; }
-        }
-        
-        @for $epNum from 0 through 500 {
-            &[data-nextepnum="#{$epNum}"] a.ep-#{$epNum} {
-                color: #2E7D32 !important;
-                font-weight: 700;
-            }
-        }
-        
-        .toggle-more-info-container {
-            position: absolute;
-            bottom: -7px;
-            right: -7px;
-            
-            .toggle-more-info {
-                position: absolute;
-                top: 0;
-                right: 0;
-                opacity: 0;
-                overflow: hidden;
-                width: 0;
-                height: 0;
-                z-index: -1;
-                
-                + label {
-                    display: block;
-                    width: 32px;
-                    height: 32px;
-                    text-align: center;
-                }
-                + label .expand_more,
-                &:checked + label .expand_less {
-                    margin-top: 4px;
-                    display: inline-block;
-                    width: 24px;
-                    height: 24px;
-                }
-                + label .expand_less,
-                &:checked + label .expand_more {
-                    display: none;
-                }
-            }
-        }
-        .more-info {
-            height: 0;
-            overflow: hidden;
-            -webkit-transition: height $transition-time;
-            transition: height $transition-time;
-            
-            .button-table-container {
-                margin: 4px -8px;
-                
-                .button-table {
-                    width: 100%;
-                    border-collapse: collapse;
-                    table-layout: fixed;
-                    
-                    td {
-                        width: 20%;
-                        text-align: center;
-                        
-                        svg {
-                            fill: $link-blue;
-                        }
-                        button {
-                            margin: 0;
-                        }
-                        button:hover svg {
-                            fill: darken($link-blue, 20%);
-                        }
-                    }
-                }
-            }
-            .episode-list {
-                height: 240px;
-                overflow-y: auto;
-                overflow-x: hidden;
-                $border-style: 2px solid #d8d8d8;
-                border-top: $border-style;
-                border-bottom: $border-style;
-                position: relative;
-                -webkit-box-shadow: inset 0px 6px 6px 0px rgba(255,255,255,1);
-                        box-shadow: inset 0px 6px 6px 0px rgba(255,255,255,1);
-                
-                a {
-                    display: block;
-                    padding: 4px $card-side-padding;
-                    padding: 4px 0;
-                    color: #707070;
-                    outline: 0 !important;
-                    -webkit-transition: color $transition-time;
-                    transition: color $transition-time;
-                    
-                    &:hover {
-                        color: #000;
-                    }
-                }
-            }
-        }
-    }
-    .show-container.expanded {
-        z-index: 2000;
-        -webkit-transition: z-index 0s;
-        transition: z-index 0s;
         
         .show {
-            z-index: 1000;
+            display: block;
+            padding: 0;
+            cursor: pointer;
+            outline: 0 !important;
+            position: relative;
+            z-index: 1;
+            -webkit-transition: z-index 0s $transition-time;
+            transition: z-index 0s $transition-time;
+            
+            &:after {
+                content: '';
+                position: absolute;
+                top: 0; right: 0; left: 0; bottom: 0;
+                z-index: -1;
+                border-radius: 4px;
+                -webkit-box-shadow: 0px 0px 4px 4px $link-blue;
+                        box-shadow: 0px 0px 4px 4px $link-blue;
+                opacity: 0;
+                -webkit-transition: opacity $transition-time cubic-bezier(.25,.8,.25,1);
+                transition: opacity $transition-time cubic-bezier(.25,.8,.25,1);
+            }
+            &:focus, &:hover {
+                -webkit-box-shadow: none;
+                box-shadow: none;
+            }
+            
+            &:hover:after { opacity: 0.75; }
+            &:focus:after { opacity: 1; }
+            
+            .show-banner {
+                height: 59px;
+                background-position: center;
+                background-size: cover;
+                border-top-left-radius: 4px;
+                border-top-right-radius: 4px;
+            }
+            .show-info {
+                padding: 12px $card-side-padding $card-side-padding;
+                
+                .position { margin-bottom: 0; }
+            }
+            
+            @for $epNum from 0 through 500 {
+                &[data-nextepnum="#{$epNum}"] a.ep-#{$epNum} {
+                    color: #2E7D32 !important;
+                    font-weight: 700;
+                }
+            }
+            
+            .toggle-more-info-container {
+                position: absolute;
+                bottom: -7px;
+                right: -7px;
+                
+                .toggle-more-info {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    opacity: 0;
+                    overflow: hidden;
+                    width: 0;
+                    height: 0;
+                    z-index: -1;
+                    
+                    + label {
+                        display: block;
+                        width: 32px;
+                        height: 32px;
+                        text-align: center;
+                    }
+                    + label .expand_more,
+                    &:checked + label .expand_less {
+                        margin-top: 4px;
+                        display: inline-block;
+                        width: 24px;
+                        height: 24px;
+                    }
+                    + label .expand_less,
+                    &:checked + label .expand_more {
+                        display: none;
+                    }
+                }
+            }
+            .more-info {
+                height: 0;
+                overflow: hidden;
+                -webkit-transition: height $transition-time;
+                transition: height $transition-time;
+                
+                .button-table-container {
+                    margin: 4px -8px;
+                    
+                    .button-table {
+                        width: 100%;
+                        border-collapse: collapse;
+                        table-layout: fixed;
+                        
+                        td {
+                            width: 20%;
+                            text-align: center;
+                            
+                            svg {
+                                fill: $link-blue;
+                            }
+                            button {
+                                margin: 0;
+                            }
+                            button:hover svg {
+                                fill: darken($link-blue, 20%);
+                            }
+                        }
+                    }
+                }
+                .episode-list {
+                    height: 264px;
+                    overflow-y: auto;
+                    overflow-x: hidden;
+                    $border-style: 2px solid #d8d8d8;
+                    border-top: $border-style;
+                    border-bottom: $border-style;
+                    position: relative;
+                    -webkit-box-shadow: inset 0px 6px 6px 0px rgba(255,255,255,1);
+                    box-shadow: inset 0px 6px 6px 0px rgba(255,255,255,1);
+                    
+                    a {
+                        display: block;
+                        padding: 4px $card-side-padding;
+                        padding: 4px 0;
+                        color: #707070;
+                        outline: 0 !important;
+                        -webkit-transition: color $transition-time;
+                        transition: color $transition-time;
+                        
+                        &:hover {
+                            color: #000;
+                        }
+                    }
+                }
+            }
+        }
+        
+        &.expanded {
+            z-index: 2000;
             -webkit-transition: z-index 0s;
             transition: z-index 0s;
             
-            .more-info {
-                height: 294px;
+            .show {
+                z-index: 1000;
+                -webkit-transition: z-index 0s;
+                transition: z-index 0s;
+                
+                .more-info {
+                    height: 314.5px;
+                }
             }
         }
     }
+}
+
+// Media queries
+@media (min-width: 1921px) {
+    #container { max-width: 1600px; }
+    .cards-container .card-container { width: 25%; }
+}
+@media (max-width: 1080px) {
+    body, button, .cards-container .card, .cards-container p {
+        font-size: 16px;
+    }
+    .shows  .show-container {
+        height: 194px;
+        
+        &.active { height: 232px; }
+    }
+}
+@media (max-width: 920px) {
+    #container { max-width: 800px; }
+    .cards-container .card-container { width: 50%; }
+}
+@media (max-width: 768px) {
+    #container { max-width: 400px; }
+    .cards-container .card-container { width: 100%; }
 }

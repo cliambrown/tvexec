@@ -1,6 +1,8 @@
 # tvexec: play local tv episode files from the browser
 
-This is a little project I made to help keep track of shows I've downloaded and which episode I'm on. It's a bit ridiculous, since it requires using (shudder) Internet Explorer, ActiveX objects, and some manual file management. But it works for me, so I wanted to share it.
+## Now 100% ActiveX-free! Works in any browser!
+
+A single-page local web app to list local files of TV episodes, keep track of which episode you're on, and open the files in MPC-HC (my favourite video player).
 
 ## Features
 
@@ -9,7 +11,7 @@ This is a little project I made to help keep track of shows I've downloaded and 
 * No internet connection required (except if you want TVDB data)
 * Has simple keyboard navigation and pleasing aesthetics
 * Gracefully handles moved/missing files, added episodes, and some basic errors
-* Makes you use IE, which feels kinda retro maybe
+* ~~Makes you use IE, which feels kinda retro maybe~~ Now works in good browsers!
 
 ## Why not use Kodi/Plex/etc?
 
@@ -23,17 +25,17 @@ I really like MPC-HC, and all I wanted was a simple tool to easily open the next
 
 ## Getting Started
 
-### Requirements
+### Prerequisites
 
-* Windows
-* Internet Explorer 11 (possibly 9+, but I've only tested it on 11)
-* [Media Player Classic](https://mpc-hc.org/)
+* ~~Windows~~ (tested on Windows only - may require tinkering on another OS)
+* ~~Internet Explorer 11~~ A good modern browser (e.g. Firefox)
+* [Media Player Classic Home Cinema](https://mpc-hc.org/)
 * a local dev server (like [xampp](https://www.apachefriends.org/index.html)) with PHP and MySQL support
 * a TVDB API key (see "Getting a TVDB API Key" below)
 
 ### Setup
 
-1. Create or choose a designated TV directory somewhere on your hard drive. Remove all non-TV files from it, and create one folder in it for every show (using the name of the show \['The' is optional\]). Add the episode files into each one (the organization of sub-directories and files inside each show folder is irrelevant).
+1. Create or choose a designated TV directory somewhere on your hard drive. Remove all non-TV files from it, and create one folder in it for every show (using the name of the show). Add the episode files into each one (the organization of sub-directories and files inside each show folder is irrelevant). ("The" in show titles is optional.)
 
    **Note: if you have more than ~10 shows or if any shows have a lot of files, you may want to start with just a part of your TV library and add more files in stages later on.**
 
@@ -55,21 +57,11 @@ I really like MPC-HC, and all I wanted was a simple tool to easily open the next
 
 4. Open `tvexec\includes\auth.php` in a text editor and add your own info to the four variables at the top of the file. Also add the database name in the db variables, plus the username and password you created in step 3.
 
-5. Open `tvexec` in IE.
+5. Open `tvexec` in an internet browser.
 
-6. Click \[Gear Icon\] > Internet Options > Security > Trusted Sites > Sites. Uncheck the "Require server verification..." box, then click Add. (The url for your `tvexec` page should now be listed as a trusted site.) Close this window and agree to any prompts that appear.
+6. Click the "Scan Directory" button and wait. **Note:** This can take a very very long time. If you get an error, you may need to click the button again, or reload the page and try again.
 
-**NOTE:** ActiveX is SUPER unsafe. Be *very* careful with the following steps, or better yet, maybe just stop here and use Plex or whatever instead?
-
-7. With "Trusted Sites" still selected, click "Custom level..." and scroll down to ActiveX controls. Enable the various ActiveX script options and disable the prompts.
-
-8. Press 'OK' and accept all prompts until finished. (You may need to clear your browser history & cache and restart the browser in order for this to take hold.)
-
-9. Click the "Scan Directory" button and wait. **Note:** This can take a very very long time. If you get an error, you may need to click the button again, or reload the page and try again.
-
-10. When prompted, select the correct TVDB show links (or enter one manually) and enter any missing episode information.
-
-11. \[Optional\] Bookmark the site or create a desktop shortcut or something. (I have a shortcut that opens IE with the `tvexec` url as a command-line switch.)
+7. When prompted, select the correct TVDB show links (or enter one manually) and enter any missing episode information.
 
 ### Getting a TVDB API Key
 
@@ -108,7 +100,7 @@ Here are the (current) steps to getting an API key:
 
 #### Directory Scan just goes on forever
 
-This can take a few minutes, which on a computer screen can feel like an hour. If it's really frozen, just reload the page and try again.
+This can take a few minutes, which on a computer screen can feel like an hour. If it's really frozen, just reload the page and try again. (See notes after step 1 above.)
 
 #### Selected the wrong TVDB show and now all that show's episodes have incorrect names *(Note: try to avoid this)*
 
@@ -120,19 +112,20 @@ This can take a few minutes, which on a computer screen can feel like an hour. I
 
 #### Episode positions are always 0:00
 
-In MPC, go to Options > Player and check the "Remember File position" box. (I'd also recommend changing Advanced > RecentFilesNumber to 40.)
+In MPC, go to Options > Player and check the "Remember File position" box. (I'd also recommend changing Advanced > RecentFilesNumber to a higher number; 40 works for me.)
 
 #### Some shows / episodes are not showing up
 
-The scanner finds mkv, mp4, avi, wmv, and mov files. If your episodes are in a different format, you'll need to add it to `tvexec\scripts\scan_show_dir.php` in the part that looks like this:
+The scanner finds avi, mkv, mp4, mov, and wmv files. If your episodes are in a different format, you'll need to add it to `tvexec\includes\auth.php` in the part that looks like this:
 ```
-$epPathnames = get_all_files($tvDir.DIRECTORY_SEPARATOR.$show['showName'], ['avi','mkv','mp4','mov','wmv']);
+$videoFiletypes = ['avi','mkv','mp4','mov','wmv'];
 ```
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Acknowledgments
 
 * James Heinrich for [getID3](https://github.com/JamesHeinrich/getID3)
+* reddit user [Johndoe9846](https://www.reddit.com/user/Johndoe9846) for suggesting a way to avoid ActiveX objects

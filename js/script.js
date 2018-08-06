@@ -101,9 +101,8 @@ function Show (showName, showID, episodes, nextEpNum) {
 Show.prototype.playNextEp = function() {
     if (this.nextEpNum < this.episodes.length) {
         // Update db
-        var formData = new FormData();
-        formData.append('showID', this.showID);
-        ajax('scripts/update_last_watched_time.php', 'POST', formData);
+        var data = createPostDataObj({showID: this.showID});
+        ajax('scripts/update_last_watched_time.php', 'POST', data);
         playFile(stripslashes(this.episodes[this.nextEpNum].pathname));
     }
 };
@@ -115,10 +114,8 @@ Show.prototype.setNextEp = function(nextEpNum) {
     this.nextEpNum = nextEpNum;
     this.showEl.setAttribute('data-nextepnum', nextEpNum);
     // Update db
-    var formData = new FormData();
-    formData.append('showID', this.showID);
-    formData.append('epID', this.getLastEpId());
-    ajax('scripts/update_last_eps.php', 'POST', formData);
+    var data = createPostDataObj({showID: this.showID, epID: this.getLastEpId()});
+    ajax('scripts/update_last_eps.php', 'POST', data);
     // Update html
     var nextEp = this.episodes[nextEpNum];
     if (nextEpNum < this.episodes.length) {
@@ -130,6 +127,7 @@ Show.prototype.setNextEp = function(nextEpNum) {
         this.durationEl.innerHTML = nextEp.duration;
         this.nextBtn.removeAttribute('disabled');
         this.endBtn.removeAttribute('disabled');
+        this.showEl.parentNode.classList.add('active');
     } else {
         this.remainingEpsEl.innerHTML = 0;
         this.nextEpNameEl.innerHTML = '';
@@ -139,6 +137,7 @@ Show.prototype.setNextEp = function(nextEpNum) {
         this.durationEl.innerHTML = '';
         this.nextBtn.setAttribute('disabled', 'true');
         this.endBtn.setAttribute('disabled', 'true');
+        this.showEl.parentNode.classList.remove('active');
     }
     if (nextEpNum == 0) {
         this.firstBtn.setAttribute('disabled', 'true');
@@ -180,7 +179,7 @@ Show.prototype.scrollToEp = function(animated) {
         epListH = epList.offsetHeight,
         epListTop = epList.scrollTop,
         epListBottom = epListTop + epListH,
-        buffer = 44;
+        buffer = 50;
     if (scrollToEpBottom + buffer > epListBottom) cstmScrollTo(epList, scrollToEpBottom + buffer - epListH, duration);
     else if (scrollToEpTop - buffer < epListTop) cstmScrollTo(epList, scrollToEpTop - buffer, duration);
 }
@@ -229,17 +228,15 @@ function handleShowDirScan(xhrResponse, loadingBtn) {
         alert('Could not parse ajax response. Data returned:\n\n' + xhrResponse);
         return false;
     }
-    console.log(responseObj);
-    if (responseObj.showOverlay) {
-        document.getElementById('overlay-content').innerHTML = responseObj.html;
-        document.getElementById('overlay-container').classList.add('show');
-        addOverlayListeners();
+    if (responseObj.hasHtml) {
+        document.getElementById('container').innerHTML = responseObj.html;
+        addFormListeners();
     } else {
         location.reload();
     }
 }
 
-function addOverlayListeners() {
+function addFormListeners() {
     var openFolderLinks = document.getElementsByClassName('open-folder');
     for (i=0; i<openFolderLinks.length; ++i) {
         openFolderLinks[i].addEventListener('click', function() {
@@ -254,7 +251,7 @@ function addOverlayListeners() {
         });
     }
     
-    var forms = document.getElementById('overlay-content').getElementsByTagName('form');
+    var forms = document.getElementsByTagName('form');
     for (i=0; i<forms.length; ++i) {
         forms[i].addEventListener('submit', function(e) {
             e.preventDefault();
@@ -269,20 +266,13 @@ function addOverlayListeners() {
 }
 
 function openFolder(path) {
-    runActiveX('explorer.exe "'+path+'"');
+    var data = createPostDataObj({path: path});
+    ajax('scripts/open_folder.php', 'POST', data);
 }
 
 function playFile(pathname) {
-    runActiveX(mpcExe + ' "' + pathname + '"');
-}
-
-function runActiveX(cmd) {
-    if (!('ActiveXObject' in window)) {
-        console.log('ActiveXObject not available.');
-        return false;
-    }
-    var oShell = new ActiveXObject("WScript.Shell");
-    oShell.Run(cmd, 1);
+    var data = createPostDataObj({pathname: pathname});
+    ajax('scripts/play_file.php', 'POST', data);
 }
 
 function toggleLoading(el, isLoading) {
@@ -349,6 +339,15 @@ function findAncestorByClass(el, classes, stopClass) {
 
 function hasClass(el, className) {
     return (' ' + el.className + ' ').indexOf(' ' + className + ' ') > -1;
+}
+
+function createPostDataObj(dataArr) {
+    var formData = new FormData();
+    for (var prop in dataArr) {
+        if(!dataArr.hasOwnProperty(prop)) continue;
+        formData.append(prop, dataArr[prop]);
+    }
+    return formData;
 }
 
 function cstmScrollTo(element, to, duration) {
