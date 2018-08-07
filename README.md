@@ -1,5 +1,9 @@
 # tvexec: play local tv episode files from the browser
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/cliambrown/tvexec/master/screenshot.png" width="600">
+</p>
+
 ## Now 100% ActiveX-free! Works in any browser!
 
 A single-page local web app to list local files of TV episodes, keep track of which episode you're on, and open the files in MPC-HC (my favourite video player).
