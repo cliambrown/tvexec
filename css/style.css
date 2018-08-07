@@ -310,8 +310,8 @@ button.loading {
   bottom: 0;
   z-index: -1;
   border-radius: 4px;
-  -webkit-box-shadow: 0px 0px 4px 4px #2196F3;
-  box-shadow: 0px 0px 4px 4px #2196F3;
+  -webkit-box-shadow: 0px 0px 4px 6px #2196F3;
+  box-shadow: 0px 0px 4px 6px #2196F3;
   opacity: 0;
   -webkit-transition: opacity 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
   transition: opacity 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);

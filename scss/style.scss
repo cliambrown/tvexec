@@ -216,8 +216,8 @@ button {
                 top: 0; right: 0; left: 0; bottom: 0;
                 z-index: -1;
                 border-radius: 4px;
-                -webkit-box-shadow: 0px 0px 4px 4px $link-blue;
-                        box-shadow: 0px 0px 4px 4px $link-blue;
+                -webkit-box-shadow: 0px 0px 4px 6px $link-blue;
+                        box-shadow: 0px 0px 4px 6px $link-blue;
                 opacity: 0;
                 -webkit-transition: opacity $transition-time cubic-bezier(.25,.8,.25,1);
                 transition: opacity $transition-time cubic-bezier(.25,.8,.25,1);
